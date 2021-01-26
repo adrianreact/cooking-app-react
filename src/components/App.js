@@ -9,7 +9,7 @@ const RECIPES = [
     name: "Nalesniki",
     cookTime: "0:30",
     servings: "5",
-    instructions: "przykladowa instrukcja",
+    instructions: "przykladowa instrukcja 1",
     ingredientsId: [0, 1],
   },
   {
@@ -17,7 +17,7 @@ const RECIPES = [
     name: "Parowki",
     cookTime: "2:00",
     servings: "12",
-    instructions: "przykladowa instrukcja",
+    instructions: "przykladowa instrukcja 2",
     ingredientsId: [2, 3],
   },
 ];
