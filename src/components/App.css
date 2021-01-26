@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: teal;
+  font-family: "Lora", serif;
+}
+
+.cooking-recipe-app {
+  display: flex;
+  max-width: 1140px;
+  margin: auto;
+  padding: 30px 15px;
+}
+
+.cooking-recipe-app > div {
+  flex: 1;
+}
+
+.recipe-list,
+.recipe-editor {
+  border: 1px solid;
+  background: #85d9ff;
+}
+
+.recipe-editor {
+  border-left: 0;
+}
+
+.recipe {
+  padding: 20px 30px;
+  border-bottom: 1px solid;
+}
+
+.recipe h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.recipe p {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.recipe p span {
+  font-weight: 400;
+}
+
+.instruction,
+.ingredients {
+  display: block;
+}
+
+.ingredient {
+  display: block;
+}
+
+.add-recipe {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.button-1 {
+  padding: 8px 15px;
+  text-transform: uppercase;
+  border: 0;
+  background-color: #2e68c3;
+  color: white;
+  font-family: "Lora", serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-editor {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 30px 10px;
+}
+
+.form {
+  padding: 20px 30px;
+}
+
+.form-field {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.form-field label {
+  flex-basis: 25%;
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field textarea {
+  flex-basis: 75%;
+  border: 0;
+  border-bottom: 2px solid #2962a2;
+  border-radius: 3px;
+  padding: 7px 10px;
+}
+
+.ingredients-labels {
+  display: flex;
+}
+
+.ingredients-labels span {
+  flex-basis: 45%;
+  margin-right: 10px;
+}
+
+.ingredients-list input {
+  flex-basis: 45%;
+  margin-right: 10px;
+}
+
+.ingredients-field {
+  flex-direction: column;
+}
+
+.ingredients-field h4 {
+  margin-bottom: 10px;
+}
+
+.ingredients-labels {
+  margin-bottom: 5px;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.save-changes {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.single-ingredient {
+  display: flex;
+  margin-bottom: 5px;
+}
