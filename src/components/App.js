@@ -10,7 +10,10 @@ const RECIPES = [
     cookTime: "0:30",
     servings: "5",
     instructions: "przykladowa instrukcja 1",
-    ingredientsId: [0, 1],
+    ingredients: [
+      { id: 0, amount: "500 ml" },
+      { id: 1, amount: "300 g" },
+    ],
   },
   {
     id: 1,
@@ -18,7 +21,10 @@ const RECIPES = [
     cookTime: "2:00",
     servings: "12",
     instructions: "przykladowa instrukcja 2",
-    ingredientsId: [2, 3],
+    ingredients: [
+      { id: 2, amount: "12 szt" },
+      { id: 3, amount: "1l" },
+    ],
   },
 ];
 
@@ -26,22 +32,18 @@ const INGREDIENTS = [
   {
     id: 0,
     name: "mleko",
-    amount: "500 ml",
   },
   {
     id: 1,
     name: "maka",
-    amount: "300 g",
   },
   {
     id: 2,
     name: "parowki",
-    amount: "12 szt",
   },
   {
     id: 3,
     name: "woda",
-    amount: "1l",
   },
 ];
 
@@ -49,34 +51,56 @@ function App() {
   const [recipes, setRecipes] = useState(RECIPES);
   const [ingredients, setIngredients] = useState(INGREDIENTS);
   const [ifEditor, setIfEditor] = useState(true);
+  console.log("ingredients", ingredients);
+  console.log("recipes", recipes);
 
-  const getIngredients = (ids) => {
+  const getIngredients = recipeIngredients => {
     return ingredients.reduce((prev, curr) => {
-      if (ids.includes(curr.id)) prev.push(curr);
+      const currentIngredient = recipeIngredients.find(
+        ing => ing.id === curr.id
+      );
+      if (currentIngredient)
+        prev.push({ ...curr, amount: currentIngredient.amount });
       return prev;
     }, []);
   };
 
-  const showEditor = () => {
-    setIfEditor(true);
-  };
-
-  const hideEditor = () => {
-    setIfEditor(false);
-  };
+  const showEditor = () => setIfEditor(true);
+  const hideEditor = () => setIfEditor(false);
 
   const addRecipe = (
     name,
     cookTime,
     servings,
     instructions,
-    newIngredients
+    recipeIngredients
   ) => {
-    //const findLastId = INGREDIEN... reduce.
+    let lastId = ingredients.reduce(
+      (prev, curr) => (curr.id > prev ? curr.id : prev),
+      0
+    );
 
-    //add ingredients
+    const updatedRecipeIngredients = recipeIngredients.map(recipeIngredient => {
+      const ingredient = ingredients.find(
+        ingredient => ingredient.name === recipeIngredient.name
+      );
+      if (ingredient) {
+        recipeIngredient.id = ingredient.id;
+        recipeIngredient.present = true;
+      } else {
+        recipeIngredient.id = lastId + 1;
+        recipeIngredient.present = false;
+        lastId += 1;
+      }
+      return recipeIngredient;
+    });
 
-    //filter
+    setIngredients([
+      ...ingredients,
+      ...updatedRecipeIngredients
+        .filter(ingredient => !ingredient.present)
+        .map(ingredient => ({ id: ingredient.id, name: ingredient.name })),
+    ]);
 
     setRecipes([
       ...recipes.concat({
@@ -85,13 +109,14 @@ function App() {
         cookTime,
         servings,
         instructions,
-        ingredientsId: [0, 3],
+        ingredients: updatedRecipeIngredients.map(ingredient => ({
+          id: ingredient.id,
+          amount: ingredient.value,
+        })),
       }),
     ]);
     setIfEditor(false);
   };
-
-  console.log("ingredients arr", ingredients);
 
   return (
     <div className="cooking-recipe-app">

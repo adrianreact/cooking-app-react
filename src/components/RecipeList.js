@@ -2,8 +2,9 @@ import React from "react";
 import Recipe from "./Recipe";
 
 function RecipeList({ recipes, getIngredients, showEditor }) {
-  const allRecipes = recipes.map((recipe) => {
-    const allIngredients = getIngredients(recipe.ingredientsId);
+  const allRecipes = recipes.map(recipe => {
+    const recipeIngredients = getIngredients(recipe.ingredients);
+
     return (
       <Recipe
         key={recipe.id}
@@ -11,7 +12,7 @@ function RecipeList({ recipes, getIngredients, showEditor }) {
         cookTime={recipe.cookTime}
         servings={recipe.servings}
         instructions={recipe.instructions}
-        allIngredients={allIngredients}
+        recipeIngredients={recipeIngredients}
       />
     );
   });

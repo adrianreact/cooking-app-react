@@ -4,14 +4,12 @@ import { RiAddCircleFill } from "react-icons/ri";
 
 function IngredientForm({ ingredientsValues, setIngredientsValues }) {
   const updateIngredient = (id, key, value) => {
-    const updatedIngredients = ingredientsValues.map((_ingredient) => {
+    const updatedIngredients = ingredientsValues.map(_ingredient => {
       if (_ingredient._id === id) _ingredient[key] = value;
       return _ingredient;
     });
     setIngredientsValues(updatedIngredients);
   };
-
-  console.log(ingredientsValues);
 
   const addNewIngredient = () => {
     setIngredientsValues([
@@ -25,7 +23,7 @@ function IngredientForm({ ingredientsValues, setIngredientsValues }) {
 
   return (
     <div className="ingredients-list">
-      {ingredientsValues.map((ingredient) => {
+      {ingredientsValues.map(ingredient => {
         return (
           <IngredientEditor
             key={ingredient._id}

@@ -1,7 +1,7 @@
 import React from "react";
 import Ingredient from "./Ingredient";
 
-function Recipe({ name, cookTime, servings, instructions, allIngredients }) {
+function Recipe({ name, cookTime, servings, instructions, recipeIngredients }) {
   return (
     <div className="recipe">
       <h1>{name}</h1>
@@ -17,7 +17,7 @@ function Recipe({ name, cookTime, servings, instructions, allIngredients }) {
       <p>
         Ingredients:{" "}
         <span className="ingredients">
-          {allIngredients.map(ingredient => (
+          {recipeIngredients.map(ingredient => (
             <Ingredient
               key={ingredient.id}
               name={ingredient.name}

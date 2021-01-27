@@ -10,21 +10,22 @@ function RecipeEditor({ hideEditor, addRecipe, enlargeIngredientsArr }) {
   const [ingredientsValues, setIngredientsValues] = useState([
     { _id: 0, name: "ziemniaki", value: "2kg" },
     { _id: 1, name: "buraki", value: "3kg" },
+    { _id: 2, name: "mleko", value: "150ml" },
   ]);
 
-  const nameChangeHandler = (e) => {
+  const nameChangeHandler = e => {
     setNameValue(e.target.value);
   };
 
-  const cookTimeChangeHandler = (e) => {
+  const cookTimeChangeHandler = e => {
     setCookTimeValue(e.target.value);
   };
 
-  const servingsChangeHandler = (e) => {
+  const servingsChangeHandler = e => {
     setServingsValue(e.target.value);
   };
 
-  const instructionsChangeHandler = (e) => {
+  const instructionsChangeHandler = e => {
     setInstructionsValue(e.target.value);
   };
 
