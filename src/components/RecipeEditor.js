@@ -88,7 +88,6 @@ function RecipeEditor({ hideEditor, addRecipe, enlargeIngredientsArr }) {
         <button
           className="button-1"
           onClick={() => {
-            enlargeIngredientsArr(ingredientsValues);
             addRecipe(
               nameValue,
               cookTimeValue,

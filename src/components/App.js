@@ -65,9 +65,18 @@ function App() {
     setIfEditor(false);
   };
 
-  const addRecipe = (name, cookTime, servings, instructions, ingredients) => {
-    //const findLastId = ingredients...
+  const addRecipe = (
+    name,
+    cookTime,
+    servings,
+    instructions,
+    newIngredients
+  ) => {
+    //const findLastId = INGREDIEN... reduce.
+
     //add ingredients
+
+    //filter
 
     setRecipes([
       ...recipes.concat({
@@ -82,12 +91,6 @@ function App() {
     setIfEditor(false);
   };
 
-  const enlargeIngredientsArr = (newIngredients) => {
-    console.log("powieksz ingredients arr");
-
-    setIngredients([...ingredients.concat(newIngredients)]);
-  };
-
   console.log("ingredients arr", ingredients);
 
   return (
@@ -98,11 +101,7 @@ function App() {
         showEditor={showEditor}
       />
       {ifEditor ? (
-        <RecipeEditor
-          hideEditor={hideEditor}
-          addRecipe={addRecipe}
-          enlargeIngredientsArr={enlargeIngredientsArr}
-        />
+        <RecipeEditor hideEditor={hideEditor} addRecipe={addRecipe} />
       ) : null}
     </div>
   );
